@@ -29,6 +29,7 @@ from .task5_semantic_search import semantic_search
 from .task6_lexical_search import lexical_search
 from .task7_reranking import rerank, rerank_rrf
 from .task8_pageindex_vectorless import pageindex_search
+from concurrent.futures import ThreadPoolExecutor
 
 
 # =============================================================================
@@ -77,33 +78,40 @@ def retrieve(
             'source': str  # 'hybrid' hoặc 'pageindex'
         }
     """
-    # TODO: Implement full retrieval pipeline
-    #
-    # Step 1: Song song chạy semantic + lexical
-    # dense_results = semantic_search(query, top_k=top_k * 2)
-    # sparse_results = lexical_search(query, top_k=top_k * 2)
-    #
-    # Step 2: Merge bằng RRF
-    # merged = rerank_rrf([dense_results, sparse_results], top_k=top_k * 2)
-    # for item in merged:
-    #     item["source"] = "hybrid"
-    #
-    # Step 3: Rerank
-    # if use_reranking and merged:
-    #     final_results = rerank(query, merged, top_k=top_k, method=RERANK_METHOD)
-    # else:
-    #     final_results = merged[:top_k]
-    #
-    # Step 4: Check threshold DÙNG ĐIỂM COSINE GỐC (dense_results), KHÔNG PHẢI RRF
-    # best_score = dense_results[0]["score"] if dense_results else 0.0
-    # if best_score < score_threshold:
-    #     print(f"  ⚠ Semantic best score ({best_score:.3f}) < threshold ({score_threshold})")
-    #     fallback = pageindex_search(query, top_k=top_k)
-    #     if fallback:
-    #         return fallback
-    #
-    # return final_results[:top_k]
-    raise NotImplementedError("Implement retrieve")
+    if not isinstance(query, str):
+        raise TypeError("query phải là chuỗi")
+    if not query.strip() or top_k <= 0:
+        return []
+
+    candidate_k = max(top_k * 2, top_k)
+    with ThreadPoolExecutor(max_workers=2) as executor:
+        dense_future = executor.submit(semantic_search, query, candidate_k)
+        sparse_future = executor.submit(lexical_search, query, candidate_k)
+        dense_results = dense_future.result()
+        sparse_results = sparse_future.result()
+
+    best_dense_score = dense_results[0]["score"] if dense_results else 0.0
+    merged = rerank_rrf(
+        [dense_results, sparse_results], top_k=candidate_k
+    )
+    for item in merged:
+        item["source"] = "hybrid"
+        item.setdefault("metadata", {})["dense_best_score"] = float(best_dense_score)
+
+    if use_reranking and merged and RERANK_METHOD != "rrf":
+        final_results = rerank(
+            query, merged, top_k=top_k, method=RERANK_METHOD
+        )
+        for item in final_results:
+            item["source"] = "hybrid"
+    else:
+        final_results = merged[:top_k]
+
+    if best_dense_score < score_threshold:
+        fallback = pageindex_search(query, top_k=top_k)
+        if fallback:
+            return fallback[:top_k]
+    return final_results[:top_k]
 
 
 if __name__ == "__main__":

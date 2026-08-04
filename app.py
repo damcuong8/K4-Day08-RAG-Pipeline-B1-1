@@ -81,7 +81,8 @@ for msg in st.session_state.messages:
     with st.chat_message(msg["role"]):
         st.markdown(msg["content"])
         if msg["role"] == "assistant" and "sources" in msg and msg["sources"]:
-            with st.expander(f"📚 Nguồn tham khảo ({len(msg['sources'])} chunks)"):
+            ret_src = msg.get("retrieval_source", "hybrid")
+            with st.expander(f"📚 Nguồn tham khảo ({len(msg['sources'])} chunks | nguồn: {ret_src})"):
                 for i, src in enumerate(msg["sources"], 1):
                     meta = src.get("metadata", {})
                     source_name = meta.get("source", "Unknown")
@@ -121,18 +122,21 @@ if query:
                 response = generate_with_citation(query, top_k=top_k)
                 answer = response.get("answer", "Chưa thể trả lời.")
                 sources = response.get("sources", [])
+                retrieval_source = response.get("retrieval_source", "hybrid")
 
             except NotImplementedError:
                 answer = "⚠️ **Task 10 chưa được implement.** Hãy hoàn thành `src/task10_generation.py` để kết nối pipeline vào UI!"
                 sources = []
+                retrieval_source = "none"
             except Exception as e:
                 answer = f"❌ **Lỗi khi chạy RAG Pipeline:** {e}"
                 sources = []
+                retrieval_source = "none"
 
             st.markdown(answer)
 
             if sources:
-                with st.expander(f"📚 Nguồn tham khảo ({len(sources)} chunks)"):
+                with st.expander(f"📚 Nguồn tham khảo ({len(sources)} chunks | nguồn: {retrieval_source})"):
                     for i, src in enumerate(sources, 1):
                         meta = src.get("metadata", {})
                         source_name = meta.get("source", "Unknown")
@@ -146,4 +150,5 @@ if query:
         "role": "assistant",
         "content": answer,
         "sources": sources,
+        "retrieval_source": retrieval_source,
     })

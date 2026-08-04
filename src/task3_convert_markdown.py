@@ -30,24 +30,45 @@ def convert_legal_docs():
     output_dir.mkdir(parents=True, exist_ok=True)
 
     from markitdown import MarkItDown
+    import fitz
 
     md = MarkItDown()
 
     for filepath in legal_dir.iterdir():
         if filepath.suffix.lower() in (".pdf", ".docx", ".doc"):
-            print(f"Converting: {filepath.name}")
+            print(f"Converting legal doc: {filepath.name}")
+            content_text = ""
             try:
                 result = md.convert(str(filepath))
-                text = str(result.text_content or "").strip()
+                if result and result.text_content:
+                    content_text = result.text_content.strip()
             except Exception as exc:
-                print(f"  ⚠ Bỏ qua {filepath.name}: {exc}")
-                continue
-            if not text:
-                print(f"  ⚠ Bỏ qua {filepath.name}: PDF scan không có text/OCR")
-                continue
+                print(f"  [WARNING] MarkItDown error for {filepath.name}: {exc}")
+
+            # Thử OCR với PyMuPDF (fitz) nếu MarkItDown không đọc được text (PDF scanned image)
+            if len(content_text) < 100 and filepath.suffix.lower() == ".pdf":
+                try:
+                    doc = fitz.open(filepath)
+                    ocr_pages = []
+                    print(f"  [INFO] Đang OCR {len(doc)} trang cho {filepath.name}...")
+                    for i, page in enumerate(doc):
+                        try:
+                            tp = page.get_textpage_ocr(language="eng+vie", full=True)
+                            p_text = tp.extractTEXT() or ""
+                        except Exception:
+                            p_text = page.get_text() or ""
+                        if p_text.strip():
+                            ocr_pages.append(f"## Trang {i+1}\n\n{p_text.strip()}")
+                    if ocr_pages:
+                        content_text = f"# {filepath.stem}\n\n" + "\n\n".join(ocr_pages)
+                except Exception as e:
+                    print(f"  [WARNING] PyMuPDF OCR error: {e}")
+
             output_path = output_dir / f"{filepath.stem}.md"
-            output_path.write_text(text, encoding="utf-8")
-            print(f"  ✓ Saved: {output_path}")
+            output_path.write_text(content_text, encoding="utf-8")
+            print(f"  [OK] Saved: {output_path} ({len(content_text)} chars)")
+
+
 
 
 def convert_news_articles():
@@ -68,7 +89,7 @@ def convert_news_articles():
                 data.get("content_markdown") or data.get("content") or ""
             ).strip()
             output_path.write_text(content, encoding="utf-8")
-            print(f"  ✓ Saved: {output_path}")
+            print(f"  [OK] Saved: {output_path}")
 
 
 def convert_all():
@@ -83,8 +104,9 @@ def convert_all():
     print("\n--- News Articles ---")
     convert_news_articles()
 
-    print("\n✓ Done! Output tại:", OUTPUT_DIR)
+    print("\n[DONE] Output at:", OUTPUT_DIR)
 
 
 if __name__ == "__main__":
     convert_all()
+

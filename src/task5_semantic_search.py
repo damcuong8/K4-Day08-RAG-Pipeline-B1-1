@@ -10,13 +10,59 @@ Yêu cầu:
 """
 
 
-def semantic_search(query: str, top_k: int = 10) -> list[dict]:
+import os
+from pathlib import Path
+
+CHROMA_DIR = Path(__file__).parent.parent / "chroma_db"
+COLLECTION_NAME = "ecommerce_support_docs"
+EMBEDDING_MODEL = os.getenv("EMBEDDING_MODEL", "sentence-transformers/all-MiniLM-L6-v2")
+
+_model = None
+
+
+def get_embedding_model():
+    """Lazy load embedding model."""
+    global _model
+    if _model is None:
+        from sentence_transformers import SentenceTransformer
+        _model = SentenceTransformer(EMBEDDING_MODEL)
+    return _model
+
+
+def get_collection():
+    """Get persistent ChromaDB collection."""
+    import chromadb
+
+    CHROMA_DIR.mkdir(parents=True, exist_ok=True)
+    client = chromadb.PersistentClient(path=str(CHROMA_DIR))
+    return client.get_or_create_collection(
+        name=COLLECTION_NAME,
+        metadata={"hnsw:space": "cosine"},
+    )
+
+
+def generate_hypothetical_document(query: str) -> str:
     """
-    Tìm kiếm ngữ nghĩa sử dụng vector similarity.
+    Kỹ thuật HyDE (Hypothetical Document Embeddings):
+    Sinh một văn bản/câu trả lời giả định từ query trước khi embed để cải thiện độ khớp ngữ nghĩa.
+    """
+    # Mở rộng ngữ nghĩa giả định theo domain pháp luật & thương mại điện tử
+    hypothetical_doc = (
+        f"Văn bản quy định chi tiết giải đáp về câu hỏi: '{query}'. "
+        f"Theo quy định của pháp luật Việt Nam và chính sách thương mại điện tử liên quan đến {query}, "
+        f"tổ chức, cá nhân có nghĩa vụ và quyền hạn thực hiện đúng quy trình, trình tự, thủ tục."
+    )
+    return hypothetical_doc
+
+
+def semantic_search(query: str, top_k: int = 10, use_hyde: bool = False) -> list[dict]:
+    """
+    Tìm kiếm ngữ nghĩa sử dụng vector similarity (Cosine Similarity) & HyDE.
 
     Args:
-        query: Câu truy vấn
+        query: Câu truy vấn của người dùng
         top_k: Số lượng kết quả tối đa
+        use_hyde: Có áp dụng Hypothetical Document Embeddings hay không
 
     Returns:
         List of {
@@ -26,42 +72,52 @@ def semantic_search(query: str, top_k: int = 10) -> list[dict]:
         }
         Sorted by score descending.
     """
-    # TODO: Implement semantic search
-    #
-    # Bước 1: Embed query bằng cùng model ở Task 4
-    # Bước 2: Query vector store (cosine similarity)
-    # Bước 3: Return top_k results
-    #
-    # Ví dụ với ChromaDB:
-    # from .task4_chunking_indexing import get_collection, get_embedding_model
-    #
-    # model = get_embedding_model()
-    # query_vector = model.encode(query).tolist()
-    # (Nếu Task 4 dùng embed_texts() dispatch theo EMBEDDING_PROVIDER thì gọi
-    #  embed_texts([query])[0] ở đây thay vì get_embedding_model().encode() —
-    #  để Task 5 tự động dùng đúng provider mà không cần sửa lại.)
-    #
-    # collection = get_collection()
-    # results = collection.query(
-    #     query_embeddings=[query_vector],
-    #     n_results=top_k,
-    #     include=["documents", "metadatas", "distances"],
-    # )
-    #
-    # output = []
-    # for doc, meta, dist in zip(
-    #     results["documents"][0], results["metadatas"][0], results["distances"][0]
-    # ):
-    #     score = max(0.0, 1.0 - dist)  # cosine distance → similarity
-    #     output.append({"content": doc, "score": round(score, 4), "metadata": meta})
-    #
-    # output.sort(key=lambda x: x["score"], reverse=True)
-    # return output[:top_k]
-    raise NotImplementedError("Implement semantic_search")
+    try:
+        collection = get_collection()
+        if collection.count() == 0:
+            return []
+    except Exception:
+        return []
+
+    # Nếu dùng HyDE, embed văn bản giả định thay vì query ngắn
+    search_text = generate_hypothetical_document(query) if use_hyde else query
+
+    model = get_embedding_model()
+    query_vector = model.encode(search_text).tolist()
+
+    actual_k = min(top_k, collection.count())
+    if actual_k <= 0:
+        return []
+
+    results = collection.query(
+        query_embeddings=[query_vector],
+        n_results=actual_k,
+        include=["documents", "metadatas", "distances"],
+    )
+
+    output = []
+    if results and results.get("documents") and results["documents"][0]:
+        docs = results["documents"][0]
+        metas = results["metadatas"][0] if results.get("metadatas") else [{}] * len(docs)
+        dists = results["distances"][0] if results.get("distances") else [0.0] * len(docs)
+
+        for doc, meta, dist in zip(docs, metas, dists):
+            # ChromaDB cosine distance d -> similarity score = max(0.0, 1.0 - d)
+            score = max(0.0, 1.0 - float(dist))
+            output.append({
+                "content": doc,
+                "score": round(score, 4),
+                "metadata": meta or {},
+            })
+
+    output.sort(key=lambda x: x["score"], reverse=True)
+    return output[:top_k]
 
 
 if __name__ == "__main__":
     # Test
-    results = semantic_search("quy định trả hàng hoàn tiền shopee", top_k=5)
+    results = semantic_search("quy định ban hành văn bản quy phạm pháp luật", top_k=5)
+    print(f"Found {len(results)} results:")
     for r in results:
-        print(f"[{r['score']:.3f}] {r['content'][:100]}...")
+        print(f"[{r['score']:.4f}] {r['content'][:100]}...")
+

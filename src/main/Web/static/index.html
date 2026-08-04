@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>R2AI Legal Assistant</title>
+    <link rel="icon" href="/logo_LA.png" type="image/png" />
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <div id="sidebarBackdrop" class="sidebar-backdrop"></div>
+    <main class="app-shell">
+      <aside id="sidebar" class="sidebar" aria-label="Thông tin hệ thống">
+        <div class="sidebar-top">
+          <div class="brand">
+            <img src="/logo_LA.png" alt="LA Logo" class="brand-mark" style="object-fit: contain;" />
+            <div>
+              <h1>Legal Assistant</h1>
+              <p>Trợ lý pháp lý dựa trên căn cứ pháp luật</p>
+            </div>
+          </div>
+        </div>
+
+        <button id="newSessionButton" class="new-chat-button" type="button">
+          <span>+</span>
+          Phiên mới
+        </button>
+
+        <section class="side-section chat-history-section" aria-labelledby="chatHistoryTitle">
+          <div class="side-section-heading">
+            <h2 id="chatHistoryTitle">Lịch sử trò chuyện</h2>
+            <button id="refreshHistoryButton" class="history-refresh-button" type="button" title="Tải lại lịch sử" aria-label="Tải lại lịch sử">
+              ↻
+            </button>
+          </div>
+          <div id="sessionHistory" class="session-history" aria-label="Danh sách cuộc trò chuyện">
+            <p class="history-empty">Chưa có cuộc trò chuyện.</p>
+          </div>
+        </section>
+
+        <section class="side-section">
+          <h2>Trạng thái</h2>
+          <div id="systemStatus" class="status-pill">Đang sẵn sàng</div>
+        </section>
+
+        <section class="side-section">
+          <h2>Lưu ý</h2>
+          <p>
+            Câu trả lời là hỗ trợ tra cứu ban đầu, không thay thế tư vấn của luật sư.
+            Hãy nhập đầy đủ tình huống, thời điểm và chủ thể liên quan.
+          </p>
+        </section>
+      </aside>
+
+      <section class="chat-panel" aria-label="Khung chat">
+        <header class="chat-header">
+          <div class="chat-title-group" style="display: flex; align-items: center; gap: 12px; margin-right: auto;">
+            <button id="sidebarToggle" class="header-button mobile-only" type="button" aria-label="Mở menu" style="padding: 0 8px;">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="4" y1="10" x2="20" y2="10"></line>
+                <line x1="4" y1="15" x2="16" y2="15"></line>
+              </svg>
+            </button>
+            <div class="chat-title">
+              <h2>Hỏi đáp pháp lý</h2>
+            </div>
+          </div>
+          <div class="header-actions">
+            <button id="copyLastButton" class="header-button" type="button" title="Copy câu trả lời cuối">
+              Copy
+            </button>
+          </div>
+        </header>
+
+        <div id="messages" class="messages" aria-live="polite">
+          <div class="empty-state">
+            <h3>Bạn cần hỗ trợ vấn đề pháp lý nào?</h3>
+            <p>Nhập tình huống cụ thể, thời điểm và chủ thể liên quan để hệ thống tra cứu căn cứ phù hợp.</p>
+            
+            <div style="margin-top: 28px; font-size: 14px; color: var(--muted); line-height: 1.5;">
+              <strong>5 câu hỏi khó trong tập 2000 câu hỏi của R2AIStage1DATA</strong><br>
+              <em>(Ấn vào câu hỏi ví dụ để chạy thử)</em>
+            </div>
+
+            <div class="prompt-grid" aria-label="Gợi ý câu hỏi">
+              <button type="button" data-prompt="Công ty tôi phát hiện một lô hàng nhập khẩu nghi xâm phạm quyền tác giả và muốn yêu cầu hải quan kiểm soát, đồng thời cần thuê giám định viên để xác minh thì phải thực hiện nghĩa vụ bảo đảm tài chính ra sao và hợp đồng giám định cần soạn thảo những nội dung chính nào, đặc biệt nếu đối tượng bị xâm phạm là người tiêu dùng dễ bị tổn thương thì công ty có trách nhiệm gì trong việc giải quyết tranh chấp?">
+                Yêu cầu hải quan kiểm soát hàng nghi xâm phạm quyền tác giả và thuê giám định viên cần lưu ý gì?
+              </button>
+              <button type="button" data-prompt="Công ty tôi muốn đặt tên thương mại cho chuỗi cửa hàng mới nhưng tên này bị một đối thủ trong cùng khu vực phản đối vì cho là xâm phạm quyền, vậy làm sao để xác định tên của tôi có khả năng phân biệt không và căn cứ nào để kết luận tôi có đang xâm phạm tên thương mại của họ hay không, đồng thời tôi cần lưu ý những dấu hiệu nào không được bảo hộ làm nhãn hiệu để tránh rủi ro pháp lý?">
+                Đặt tên thương mại cho chuỗi cửa hàng mới có thể xâm phạm quyền của đối thủ không?
+              </button>
+              <button type="button" data-prompt="Công ty tôi đang áp dụng trả lương theo sản phẩm cho nhân viên, nhưng hiện tại đang trả thấp hơn mức lương tối thiểu và chưa đóng BHXH cho một số lao động không thuộc đối tượng bắt buộc, vậy công ty cần xử lý việc trả lương, khắc phục sai phạm về chi phí bảo hiểm và mức lương này như thế nào, đồng thời tiền lương đóng BHXH của những nhân viên này sau này sẽ được điều chỉnh ra sao?">
+                Trả lương theo sản phẩm thấp hơn lương tối thiểu và vấn đề BHXH xử lý thế nào?
+              </button>
+              <button type="button" data-prompt="Trong trường hợp công ty trách nhiệm hữu hạn hai thành viên trở lên muốn thay đổi thành viên do chuyển nhượng phần vốn góp và đồng thời muốn tìm hiểu về điều kiện để một doanh nghiệp nhỏ và vừa được Quỹ phát triển doanh nghiệp nhỏ và vừa tiếp tục xem xét cho vay sau khi đã trả hết nợ, công ty cần chuẩn bị hồ sơ đăng ký thay đổi gồm những gì và điều kiện vay vốn tiếp theo là gì?">
+                Công ty TNHH thay đổi thành viên do chuyển nhượng vốn và vay tiếp Quỹ DNNVV cần gì?
+              </button>
+              <button type="button" data-prompt="Công ty tôi đang nộp đơn đăng ký nhãn hiệu, kiểu dáng công nghiệp và thiết kế bố trí cho sản phẩm mới, vậy nếu Cục Sở hữu trí tuệ nghi ngờ tính xác thực thông tin trong đơn kiểu dáng hoặc thông báo đơn thiết kế bố trí có thiếu sót thì công ty phải xử lý thế nào để không bị từ chối cấp văn bằng, và nhãn hiệu cần đáp ứng điều kiện gì về khả năng phân biệt để được bảo hộ?">
+                Đơn nhãn hiệu, kiểu dáng công nghiệp và thiết kế bố trí cần xử lý thiếu sót ra sao?
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <form id="chatForm" class="composer">
+          <div class="composer-inner">
+            <textarea
+              id="messageInput"
+              rows="1"
+              maxlength="4000"
+              placeholder="Nhập câu hỏi pháp lý đầy đủ..."
+              required
+            ></textarea>
+            <div class="composer-actions">
+              <span id="charCounter">0/4000</span>
+              <button id="sendButton" type="submit" aria-label="Gửi câu hỏi" title="Gửi">
+                ↑
+              </button>
+            </div>
+          </div>
+        </form>
+      </section>
+    </main>
+
+    <script src="/app.js" defer></script>
+  </body>
+</html>

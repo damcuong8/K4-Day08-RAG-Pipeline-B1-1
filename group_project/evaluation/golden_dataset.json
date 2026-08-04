@@ -1,17 +1,165 @@
 [
   {
-    "question": "Người mua có thể yêu cầu trả hàng/hoàn tiền trong thời hạn bao lâu sau khi nhận hàng?",
-    "expected_answer": "Trong vòng 15 ngày kể từ khi giao hàng thành công (24 giờ đối với thực phẩm tươi sống/đông lạnh).",
-    "expected_context": "Trang Returns and Refunds Policy, mục Return/Refund Eligibility"
+    "question": "Mức trợ cấp mai táng đối với người lao động được tính như thế nào?",
+    "expected_answer": "Theo khoản 2 Điều 85 Luật Bảo hiểm xã hội 2024, mức trợ cấp mai táng bằng 10 lần mức tham chiếu tại tháng người lao động chết. Khoản này được trả một lần cho tổ chức hoặc cá nhân lo mai táng khi người chết thuộc một trong các trường hợp tại khoản 1 Điều 85, như đã đóng BHXH bắt buộc từ đủ 12 tháng, chết do tai nạn lao động hoặc bệnh nghề nghiệp, hoặc đang hưởng/tạm dừng hưởng lương hưu hay trợ cấp tai nạn lao động, bệnh nghề nghiệp hằng tháng sau khi nghỉ việc.",
+    "expected_context": [
+      "41/2024/QH15|Luật Bảo hiểm xã hội 2024|Điều 85"
+    ]
   },
   {
-    "question": "Shopee hỗ trợ những phương thức thanh toán nào?",
-    "expected_answer": "ShopeePay Wallet, thẻ tín dụng/ghi nợ, trả góp qua thẻ, QR Code, chuyển khoản qua app ngân hàng, thẻ NAPAS, Apple Pay, Google Pay, và COD.",
-    "expected_context": "Trang Payment Methods Overview"
+    "question": "Công ty phải thực hiện đề nghị và nộp phí công bố nội dung đăng ký doanh nghiệp vào thời điểm nào?",
+    "expected_answer": "Công ty phải đề nghị công bố và nộp phí công bố nội dung đăng ký doanh nghiệp ngay tại thời điểm nộp hồ sơ đăng ký doanh nghiệp. Nếu không được cấp đăng ký doanh nghiệp thì phí công bố được hoàn trả.",
+    "expected_context": [
+      "168/2025/NĐ-CP|Nghị định 168/2025/NĐ-CP về đăng ký doanh nghiệp|Điều 73"
+    ]
   },
   {
-    "question": "Người bán không được đăng bán những sản phẩm nào?",
-    "expected_answer": "Hàng giả/nhái, sản phẩm bất hợp pháp, vi phạm sở hữu trí tuệ, và các mặt hàng nằm trong danh sách cấm của sàn.",
-    "expected_context": "Trang Product Listing Regulations, mục Prohibited Content"
+    "question": "Việc vận hành máy phát điện gây tiếng ồn vượt quá quy chuẩn kỹ thuật sẽ bị xử phạt hành chính như thế nào?",
+    "expected_answer": "Mức xử phạt phụ thuộc số dBA vượt quy chuẩn. Đối với cá nhân: dưới 02 dBA bị cảnh cáo; từ 02 đến dưới 05 dBA phạt 1-5 triệu đồng; 05 đến dưới 10 dBA phạt 5-20 triệu; 10 đến dưới 15 dBA phạt 20-40 triệu; 15 đến dưới 20 dBA phạt 40-60 triệu; 20 đến dưới 25 dBA phạt 60-80 triệu; 25 đến dưới 30 dBA phạt 80-100 triệu; 30 đến dưới 35 dBA phạt 100-120 triệu; 35 đến dưới 40 dBA phạt 120-140 triệu; từ 40 dBA trở lên phạt 140-160 triệu đồng. Công ty là tổ chức nên mức phạt tiền bằng 02 lần các mức trên. Cơ sở còn có thể bị đình chỉ hoạt động gây tiếng ồn từ 03-06 tháng đối với mức vượt từ 10 đến dưới 30 dBA, hoặc 06-12 tháng đối với mức vượt từ 30 dBA trở lên; đồng thời phải giảm tiếng ồn đạt quy chuẩn và chi trả chi phí giám định, kiểm định, đo đạc, phân tích mẫu môi trường.",
+    "expected_context": [
+      "45/2022/NĐ-CP|Nghị định 45/2022/NĐ-CP quy định về xử phạt vi phạm hành chính trong lĩnh vực bảo vệ môi trường|Điều 6",
+      "45/2022/NĐ-CP|Nghị định 45/2022/NĐ-CP quy định về xử phạt vi phạm hành chính trong lĩnh vực bảo vệ môi trường|Điều 22 (Khoản 1-7)",
+      "45/2022/NĐ-CP|Nghị định 45/2022/NĐ-CP quy định về xử phạt vi phạm hành chính trong lĩnh vực bảo vệ môi trường|Điều 22 (Khoản 8-12)"
+    ]
+  },
+  {
+    "question": "Thời hạn để cơ quan quản lý công trình thủy lợi cho ý kiến phê duyệt kết quả thẩm định báo cáo đánh giá tác động môi trường đối với dự án đầu tư có hoạt động xả nước thải vào công trình thủy lợi là bao lâu?",
+    "expected_answer": "Theo Điều 16 Thông tư 02/2022/TT-BTNMT đã được thay thế nội dung bởi khoản 2 và khoản 3 Điều 8 Thông tư 09/2026/TT-BNNMT, cơ quan quản lý nhà nước về thủy lợi phải trả lời bằng văn bản trong thời hạn 03 ngày kể từ ngày nhận văn bản lấy ý kiến. Hết thời hạn mà không trả lời thì được coi là đồng thuận. Nếu cơ quan thẩm định đồng thời là cơ quan quản lý nhà nước về thủy lợi thì việc lấy và trả lời ý kiến được thực hiện nội bộ.",
+    "expected_context": [
+      "02/2022/TT-BTNMT|Thông tư 02/2022/TT-BTNMT hướng dẫn Luật Bảo vệ môi trường do Bộ trưởng Bộ Tài nguyên và Môi trường ban hành|Điều 16",
+      "09/2026/TT-BNNMT|Thông tư 09/2026/TT-BNNMT sửa đổi Thông tư 02/2022/TT-BTNMT hướng dẫn Luật Bảo vệ môi trường được sửa đổi bởi Thông tư 07/2025/TT-BTNMT và Thông tư 07/2025/TT-BNNMT do Bộ trưởng Bộ Nông nghiệp và Môi trường ban hành|Điều 8 (Khoản 2-3)"
+    ]
+  },
+  {
+    "question": "Công ty có một quản lý doanh nghiệp hưởng lương và một nhân viên nữ đang nghỉ thai sản; nếu nhân viên nữ này thôi việc trước khi sinh con thì ai là người nộp hồ sơ thai sản, và nếu vị quản lý trên đóng BHXH trên 35 năm thì khi nghỉ hưu sẽ được hưởng thêm khoản trợ cấp một lần như thế nào?",
+    "expected_answer": "Nếu lao động nữ thôi việc trước thời điểm sinh con thì chính người lao động nộp hồ sơ thai sản trực tiếp cho cơ quan BHXH; hồ sơ không đi qua công ty. Đối với người quản lý doanh nghiệp hưởng lương thuộc diện BHXH bắt buộc, nếu là lao động nam có thời gian đóng cao hơn 35 năm thì khi nghỉ hưu, ngoài lương hưu còn được trợ cấp một lần. Mỗi năm đóng vượt trên 35 năm cho đến tuổi nghỉ hưu được tính bằng 0,5 lần mức bình quân tiền lương làm căn cứ đóng BHXH. Nếu đã đủ điều kiện hưởng lương hưu mà vẫn tiếp tục đóng BHXH thì mỗi năm đóng từ sau thời điểm đủ tuổi nghỉ hưu đến khi nghỉ hưu được tính bằng 02 lần mức bình quân tiền lương làm căn cứ đóng BHXH.",
+    "expected_context": [
+      "41/2024/QH15|Luật Bảo hiểm xã hội 2024|Điều 62",
+      "41/2024/QH15|Luật Bảo hiểm xã hội 2024|Điều 68"
+    ]
+  },
+  {
+    "question": "Trong trường hợp công ty thuê lại lao động và giao cho họ làm việc tại nhà, công ty cần thỏa thuận những gì về an toàn vệ sinh lao động và trách nhiệm phối hợp kiểm tra giữa bên thuê lại với doanh nghiệp cho thuê lao động là gì?",
+    "expected_answer": "Việc giao công việc về nhà phải được người lao động và người sử dụng lao động thỏa thuận bằng văn bản trên cơ sở người lao động bảo đảm yêu cầu an toàn, vệ sinh lao động tại nơi làm việc ở nhà; người sử dụng lao động phải kiểm tra nơi làm việc và thực hiện các cam kết đã thỏa thuận. Trong quan hệ thuê lại lao động, doanh nghiệp cho thuê và bên thuê lại phải thỏa thuận việc bảo đảm quyền, lợi ích hợp pháp về an toàn, vệ sinh lao động của người lao động thuê lại, với mức bảo đảm không thấp hơn người lao động của bên thuê lại có cùng trình độ và làm công việc cùng hoặc tương đương, đồng thời ghi nội dung này vào hợp đồng cho thuê lại lao động. Doanh nghiệp cho thuê có trách nhiệm phối hợp, kiểm tra bên thuê lại; nếu bên thuê lại không thực hiện đầy đủ cam kết thì doanh nghiệp cho thuê phải bảo đảm đầy đủ quyền lợi của người lao động. Bên thuê lại phải thực hiện cam kết, không phân biệt đối xử, huấn luyện an toàn khi cần và phối hợp điều tra tai nạn lao động.",
+    "expected_context": [
+      "84/2015/QH13|Luật an toàn, vệ sinh lao động 2015|Điều 65 (Khoản 1)",
+      "84/2015/QH13|Luật an toàn, vệ sinh lao động 2015|Điều 65 (Khoản 2-4)",
+      "84/2015/QH13|Luật an toàn, vệ sinh lao động 2015|Điều 69"
+    ]
+  },
+  {
+    "question": "Sau khi có thông báo kết quả thẩm định nội dung, công ty cần làm gì để được cấp văn bằng bảo hộ sở hữu công nghiệp?",
+    "expected_answer": "Nếu thông báo nêu dự định cấp văn bằng, trong thời hạn 03 tháng kể từ ngày ra thông báo, người nộp đơn phải nộp đầy đủ lệ phí cấp văn bằng, phí công bố quyết định cấp và phí đăng bạ quyết định cấp. Đối với sáng chế hoặc giải pháp hữu ích còn phải nộp lệ phí duy trì hiệu lực và phí sử dụng văn bằng năm thứ nhất; nếu đơn chỉ được chấp nhận một phần thì phải đồng ý, sửa đổi đơn theo yêu cầu và nộp phí đúng hạn. Không sửa đổi hoặc không nộp đủ phí, lệ phí đúng hạn có thể dẫn đến quyết định từ chối cấp. Khi đã nộp đầy đủ, đúng hạn, Cục Sở hữu trí tuệ ra quyết định cấp theo thời hạn quy định cho từng loại đối tượng, thông thường là 15 ngày kể từ khi kết thúc thời hạn tương ứng.",
+    "expected_context": [
+      "23/2023/TT-BKHCN|Thông tư 23/2023/TT-BKHCN hướng dẫn Luật Sở hữu trí tuệ và Nghị định 65/2023/NĐ-CP hướng dẫn Luật Sở hữu trí tuệ về sở hữu công nghiệp, bảo vệ quyền sở hữu công nghiệp, quyền đối với giống cây trồng và quản lý nhà nước về sở hữu trí tuệ liên quan đến thủ tục xác lập quyền sở hữu công nghiệp và bảo đảm thông tin sở hữu công nghiệp do Bộ trưởng Bộ Khoa học và Công nghệ ban hành|Điều 16 (Khoản 8)",
+      "23/2023/TT-BKHCN|Thông tư 23/2023/TT-BKHCN hướng dẫn Luật Sở hữu trí tuệ và Nghị định 65/2023/NĐ-CP hướng dẫn Luật Sở hữu trí tuệ về sở hữu công nghiệp, bảo vệ quyền sở hữu công nghiệp, quyền đối với giống cây trồng và quản lý nhà nước về sở hữu trí tuệ liên quan đến thủ tục xác lập quyền sở hữu công nghiệp và bảo đảm thông tin sở hữu công nghiệp do Bộ trưởng Bộ Khoa học và Công nghệ ban hành|Điều 23 (Khoản 10)",
+      "23/2023/TT-BKHCN|Thông tư 23/2023/TT-BKHCN hướng dẫn Luật Sở hữu trí tuệ và Nghị định 65/2023/NĐ-CP hướng dẫn Luật Sở hữu trí tuệ về sở hữu công nghiệp, bảo vệ quyền sở hữu công nghiệp, quyền đối với giống cây trồng và quản lý nhà nước về sở hữu trí tuệ liên quan đến thủ tục xác lập quyền sở hữu công nghiệp và bảo đảm thông tin sở hữu công nghiệp do Bộ trưởng Bộ Khoa học và Công nghệ ban hành|Điều 26 (Khoản 13)",
+      "23/2023/TT-BKHCN|Thông tư 23/2023/TT-BKHCN hướng dẫn Luật Sở hữu trí tuệ và Nghị định 65/2023/NĐ-CP hướng dẫn Luật Sở hữu trí tuệ về sở hữu công nghiệp, bảo vệ quyền sở hữu công nghiệp, quyền đối với giống cây trồng và quản lý nhà nước về sở hữu trí tuệ liên quan đến thủ tục xác lập quyền sở hữu công nghiệp và bảo đảm thông tin sở hữu công nghiệp do Bộ trưởng Bộ Khoa học và Công nghệ ban hành|Điều 30 (Khoản 7)"
+    ]
+  },
+  {
+    "question": "Trong trường hợp doanh nghiệp cho thuê lại không thanh toán quyền lợi cho người lao động, tiền ký quỹ sẽ được dùng để chi trả cho những khoản nào trước?",
+    "expected_answer": "Khi doanh nghiệp cho thuê lại gặp khó khăn, không đủ nguồn để thanh toán sau thời hạn luật định, tiền ký quỹ được dùng để thanh toán tiền lương; BHXH, BHYT, bảo hiểm thất nghiệp, bảo hiểm tai nạn lao động và bệnh nghề nghiệp; các chế độ khác theo hợp đồng lao động, thỏa ước lao động tập thể, nội quy hoặc quy chế; và tiền bồi thường do vi phạm hợp đồng hoặc không bảo đảm quyền, lợi ích hợp pháp của người lao động thuê lại. Ngân hàng nhận ký quỹ trực tiếp chi trả theo phương án đã được Chủ tịch UBND cấp tỉnh đồng ý, sau khi trừ chi phí dịch vụ ngân hàng.",
+    "expected_context": [
+      "145/2020/NĐ-CP|Nghị định 145/2020/NĐ-CP hướng dẫn Bộ luật Lao động về điều kiện lao động và quan hệ lao động|Điều 18 (Khoản 1)",
+      "145/2020/NĐ-CP|Nghị định 145/2020/NĐ-CP hướng dẫn Bộ luật Lao động về điều kiện lao động và quan hệ lao động|Điều 18 (Khoản 4)"
+    ]
+  },
+  {
+    "question": "Nếu công ty vừa chậm đóng kinh phí công đoàn vừa khai thiếu số tiền thuế phải nộp thì sẽ bị xử lý và buộc phải khắc phục hậu quả như thế nào?",
+    "expected_answer": "Hai hành vi được xử lý độc lập. Với hành vi chậm đóng kinh phí công đoàn, mức phạt gốc là từ 12% đến dưới 15% tổng số tiền phải đóng tại thời điểm lập biên bản, tối đa 75 triệu đồng đối với cá nhân; công ty là tổ chức nên mức phạt gấp đôi, tức từ 24% đến dưới 30% và tối đa 150 triệu đồng. Chậm nhất 30 ngày từ ngày có quyết định xử phạt, công ty phải nộp đủ kinh phí công đoàn còn thiếu và tiền lãi tính theo lãi suất tiền gửi không kỳ hạn cao nhất của các ngân hàng thương mại nhà nước tại thời điểm xử phạt. Với hành vi khai sai dẫn đến thiếu thuế thuộc Điều 16 Nghị định 125/2020/NĐ-CP, công ty bị phạt 20% số thuế khai thiếu; đồng thời phải nộp đủ số thuế thiếu và tiền chậm nộp, và điều chỉnh lại số lỗ hoặc số thuế GTGT đầu vào được khấu trừ chuyển kỳ sau nếu có.",
+    "expected_context": [
+      "12/2022/NĐ-CP|Nghị định 12/2022/NĐ-CP về xử phạt vi phạm hành chính trong lĩnh vực lao động, bảo hiểm xã hội, người lao động Việt Nam đi làm việc ở nước ngoài theo hợp đồng|Điều 6 (Khoản 1-2)",
+      "12/2022/NĐ-CP|Nghị định 12/2022/NĐ-CP về xử phạt vi phạm hành chính trong lĩnh vực lao động, bảo hiểm xã hội, người lao động Việt Nam đi làm việc ở nước ngoài theo hợp đồng|Điều 38",
+      "125/2020/NĐ-CP|Nghị định 125/2020/NĐ-CP quy định về xử phạt vi phạm hành chính về thuế, hóa đơn|Điều 16 (Khoản 1)",
+      "125/2020/NĐ-CP|Nghị định 125/2020/NĐ-CP quy định về xử phạt vi phạm hành chính về thuế, hóa đơn|Điều 16 (Khoản 2-3)"
+    ]
+  },
+  {
+    "question": "Khi công ty muốn ký hợp đồng chuyển nhượng quyền sử dụng đất, hợp đồng này cần đáp ứng yêu cầu gì về hình thức và nội dung không được trái với quy định nào?",
+    "expected_answer": "Hợp đồng chuyển nhượng quyền sử dụng đất phải được lập thành văn bản, có hình thức phù hợp với Bộ luật Dân sự, pháp luật đất đai và pháp luật liên quan; việc thực hiện hợp đồng phải đúng trình tự, thủ tục của pháp luật đất đai. Nội dung hợp đồng không được trái quy định về mục đích sử dụng đất, thời hạn sử dụng đất, quy hoạch, kế hoạch sử dụng đất, các quyền và nghĩa vụ khác theo pháp luật đất đai và pháp luật có liên quan.",
+    "expected_context": [
+      "91/2015/QH13|Bộ luật dân sự 2015|Điều 501",
+      "91/2015/QH13|Bộ luật dân sự 2015|Điều 502"
+    ]
+  },
+  {
+    "question": "Khi làm thủ tục đăng ký hộ kinh doanh, tôi cần nộp bao nhiêu bộ hồ sơ?",
+    "expected_answer": "Người thành lập hộ kinh doanh hoặc hộ kinh doanh chỉ phải nộp 01 bộ hồ sơ cho mỗi thủ tục đăng ký hộ kinh doanh. Cơ quan đăng ký kinh doanh cấp xã không được yêu cầu nộp thêm hồ sơ hoặc giấy tờ ngoài thành phần đã được Nghị định quy định.",
+    "expected_context": [
+      "168/2025/NĐ-CP|Nghị định 168/2025/NĐ-CP về đăng ký doanh nghiệp|Điều 90"
+    ]
+  },
+  {
+    "question": "Công ty phải báo cáo tình hình thay đổi lao động định kỳ 6 tháng và hằng năm vào thời điểm nào?",
+    "expected_answer": "Công ty phải báo cáo định kỳ 06 tháng trước ngày 05 tháng 6 và báo cáo hằng năm trước ngày 05 tháng 12.",
+    "expected_context": [
+      "145/2020/NĐ-CP|Nghị định 145/2020/NĐ-CP hướng dẫn Bộ luật Lao động về điều kiện lao động và quan hệ lao động|Điều 4 (Khoản 1-2)"
+    ]
+  },
+  {
+    "question": "Báo cáo tài chính của công ty cần cung cấp những thông tin cơ bản nào về tình hình tài chính và kinh doanh?",
+    "expected_answer": "Báo cáo tài chính phải cung cấp thông tin về tài sản; nợ phải trả; vốn chủ sở hữu; doanh thu, thu nhập khác, chi phí sản xuất kinh doanh và chi phí khác; lãi, lỗ và việc phân chia kết quả kinh doanh. Bản thuyết minh báo cáo tài chính phải giải trình thêm các chỉ tiêu đã phản ánh và các chính sách kế toán được áp dụng để ghi nhận nghiệp vụ, lập và trình bày báo cáo.",
+    "expected_context": [
+      "133/2016/TT-BTC|Thông tư 133/2016/TT-BTC hướng dẫn Chế độ kế toán doanh nghiệp nhỏ và vừa do Bộ trưởng Bộ Tài chính ban hành|Điều 69"
+    ]
+  },
+  {
+    "question": "Thành viên góp vốn trong công ty hợp danh có thể đảm nhiệm chức vụ giám đốc công ty được không?",
+    "expected_answer": "Không, nếu người đó chỉ là thành viên góp vốn. Thành viên góp vốn không được tham gia quản lý công ty và không được tiến hành công việc kinh doanh nhân danh công ty. Hội đồng thành viên bầu một thành viên hợp danh làm Chủ tịch Hội đồng thành viên, đồng thời kiêm Giám đốc hoặc Tổng giám đốc nếu Điều lệ không quy định khác.",
+    "expected_context": [
+      "59/2020/QH14|Luật Doanh nghiệp 2020|Điều 182",
+      "59/2020/QH14|Luật Doanh nghiệp 2020|Điều 187 (Khoản 2)"
+    ]
+  },
+  {
+    "question": "Việc sử dụng hình thẻ của cá nhân để quảng cáo cho tiệm chụp ảnh có bị cấm không?",
+    "expected_answer": "Có, nếu chưa được cá nhân trong ảnh đồng ý và không thuộc trường hợp pháp luật cho phép. Luật Quảng cáo cấm quảng cáo sử dụng hình ảnh, lời nói hoặc chữ viết của cá nhân khi chưa có sự đồng ý của người đó. Vì vậy, tiệm chụp ảnh phải có sự đồng ý hợp lệ trước khi dùng hình thẻ để quảng cáo.",
+    "expected_context": [
+      "16/2012/QH13|Luật Quảng cáo 2012|Điều 8 (Khoản 1-10)"
+    ]
+  },
+  {
+    "question": "Trong những trường hợp nào công ty sẽ bị cơ quan thuế ấn định số tiền thuế phải nộp?",
+    "expected_answer": "Cơ quan thuế ấn định số thuế phải nộp khi công ty: (1) không đăng ký thuế; (2) không khai thuế hoặc khai không đầy đủ, trung thực, chính xác; (3) không bổ sung hồ sơ thuế theo yêu cầu hoặc bổ sung nhưng vẫn không đầy đủ, trung thực, chính xác; (4) không phản ánh hoặc phản ánh không đầy đủ, trung thực, chính xác số liệu trên sổ kế toán; (5) không xuất trình sổ kế toán, hóa đơn, chứng từ và tài liệu cần thiết đúng thời hạn; (6) không chấp hành quyết định kiểm tra thuế trong 10 ngày làm việc, trừ trường hợp được hoãn; (7) không chấp hành quyết định thanh tra thuế trong 15 ngày, trừ trường hợp được hoãn; (8) mua, bán, trao đổi và hạch toán hàng hóa, dịch vụ không theo giá giao dịch thông thường trên thị trường; (9) sử dụng hóa đơn không hợp pháp cho giao dịch có thật đã được kê khai; (10) có dấu hiệu bỏ trốn hoặc phát tán tài sản để tránh nghĩa vụ thuế; (11) thực hiện giao dịch không đúng bản chất kinh tế, không đúng thực tế nhằm giảm nghĩa vụ thuế; hoặc (12) vi phạm nghĩa vụ kê khai, xác định giá hay cung cấp thông tin về giao dịch liên kết.",
+    "expected_context": [
+      "126/2020/NĐ-CP|Nghị định 126/2020/NĐ-CP về hướng dẫn Luật Quản lý thuế|Điều 14 (Khoản 1-10)",
+      "126/2020/NĐ-CP|Nghị định 126/2020/NĐ-CP về hướng dẫn Luật Quản lý thuế|Điều 14 (Khoản 11-12)"
+    ]
+  },
+  {
+    "question": "Nếu công ty bị cơ quan thuế ấn định thuế do không cung cấp đủ sổ sách kế toán và thông tin từ cơ quan đăng ký kinh doanh về việc thay đổi nội dung đăng ký doanh nghiệp, thì quy trình xử lý của cơ quan thuế sẽ diễn ra như thế nào và công ty phải đối mặt với những hậu quả pháp lý gì?",
+    "expected_answer": "Không xuất trình sổ kế toán, hóa đơn, chứng từ và tài liệu cần thiết đúng thời hạn là căn cứ để cơ quan thuế ấn định thuế. Cơ quan thuế có thể căn cứ cơ sở dữ liệu quản lý thuế và dữ liệu thương mại, kết quả kiểm tra, thanh tra còn hiệu lực, kết quả xác minh và dữ liệu của tối thiểu 03 cơ sở kinh doanh tương đồng để ấn định từng yếu tố, doanh thu hoặc số thuế phải nộp. Cơ quan thuế phải thông báo bằng văn bản và ban hành quyết định nêu rõ lý do, căn cứ, số thuế và thời hạn nộp; quyết định được gửi trong 03 ngày làm việc kể từ ngày ký. Công ty phải nộp số thuế ấn định ngay cả khi không đồng ý, nhưng có quyền yêu cầu giải thích, khiếu nại hoặc khởi kiện; đồng thời có thể bị xử phạt vi phạm hành chính và tính tiền chậm nộp. Thông tin thay đổi đăng ký doanh nghiệp là nguồn dữ liệu do cơ quan đăng ký kinh doanh gửi điện tử cho cơ quan thuế trong 01 ngày làm việc hoặc chậm nhất ngày làm việc tiếp theo kể từ khi ghi nhận trên hệ thống; bản thân việc cơ quan đăng ký kinh doanh truyền thông tin không phải là một chế tài riêng đối với công ty.",
+    "expected_context": [
+      "126/2020/NĐ-CP|Nghị định 126/2020/NĐ-CP về hướng dẫn Luật Quản lý thuế|Điều 14 (Khoản 1-10)",
+      "126/2020/NĐ-CP|Nghị định 126/2020/NĐ-CP về hướng dẫn Luật Quản lý thuế|Điều 15 (Khoản 1)",
+      "126/2020/NĐ-CP|Nghị định 126/2020/NĐ-CP về hướng dẫn Luật Quản lý thuế|Điều 15 (Khoản 2)",
+      "126/2020/NĐ-CP|Nghị định 126/2020/NĐ-CP về hướng dẫn Luật Quản lý thuế|Điều 16",
+      "126/2020/NĐ-CP|Nghị định 126/2020/NĐ-CP về hướng dẫn Luật Quản lý thuế|Điều 26 (Khoản 1)"
+    ]
+  },
+  {
+    "question": "Khi giao kết hợp đồng trên môi trường mạng, trách nhiệm cung cấp thông tin được quy định như thế nào?",
+    "expected_answer": "Trừ khi các bên có thỏa thuận khác, bên bán hàng hóa hoặc cung cấp dịch vụ phải cung cấp cho bên kia thông tin về: trình tự thực hiện để tiến tới giao kết hợp đồng trên môi trường mạng; biện pháp kỹ thuật để xác định và sửa thông tin nhập sai; và việc lưu trữ hồ sơ hợp đồng cùng khả năng truy nhập hồ sơ đó. Khi đưa ra điều kiện hợp đồng cho người tiêu dùng, tổ chức hoặc cá nhân phải bảo đảm người tiêu dùng có thể lưu trữ và tái tạo các thông tin này.",
+    "expected_context": [
+      "67/2006/QH11|Luật Công nghệ thông tin 2006|Điều 31"
+    ]
+  },
+  {
+    "question": "Công ty tôi muốn bổ sung thêm một người đại diện theo pháp luật để thuận tiện điều hành, vậy tôi cần quy định những nội dung gì trong Điều lệ và phải thực hiện công bố thông tin này như thế nào?",
+    "expected_answer": "Công ty TNHH hoặc công ty cổ phần có thể có nhiều người đại diện theo pháp luật. Điều lệ phải quy định cụ thể số lượng, chức danh quản lý, quyền và nghĩa vụ của từng người đại diện. Nếu phân chia quyền, nghĩa vụ không rõ thì mỗi người đều có đủ thẩm quyền đại diện doanh nghiệp trước bên thứ ba và cùng liên đới chịu trách nhiệm về thiệt hại gây ra cho doanh nghiệp. Do người đại diện theo pháp luật là nội dung của Giấy chứng nhận đăng ký doanh nghiệp, công ty phải đăng ký thay đổi với Cơ quan đăng ký kinh doanh trong 10 ngày kể từ ngày có thay đổi. Sau khi được đăng ký, thay đổi tương ứng phải được công khai trên Cổng thông tin quốc gia về đăng ký doanh nghiệp; thời hạn thông báo công khai là 30 ngày kể từ ngày được công khai.",
+    "expected_context": [
+      "59/2020/QH14|Luật Doanh nghiệp 2020|Điều 12 (Khoản 1-3)",
+      "59/2020/QH14|Luật Doanh nghiệp 2020|Điều 30 (Khoản 1-3)",
+      "59/2020/QH14|Luật Doanh nghiệp 2020|Điều 32"
+    ]
+  },
+  {
+    "question": "Việc từ chối kết quả trúng đấu giá tài sản của Bộ Quốc phòng được quy định như thế nào?",
+    "expected_answer": "Nếu người điều hành đã công bố người trúng đấu giá nhưng người này từ chối ngay tại cuộc đấu giá, người trả giá liền kề trở thành người trúng đấu giá khi giá liền kề cộng tiền đặt trước ít nhất bằng giá của người từ chối và người trả giá liền kề chấp nhận mua. Nếu tổng này thấp hơn giá đã trả của người từ chối hoặc người trả giá liền kề không chấp nhận mua thì cuộc đấu giá không thành. Người từ chối kết quả trúng đấu giá không được nhận lại tiền đặt trước; khoản tiền này thuộc người có tài sản đấu giá và được nộp ngân sách nhà nước sau khi trừ chi phí đấu giá.",
+    "expected_context": [
+      "126/2020/TT-BQP|Thông tư 126/2020/TT-BQP về loại khỏi biên chế và xử lý tài sản nhà nước trong Bộ Quốc phòng|Điều 28 (Khoản 6-8)",
+      "126/2020/TT-BQP|Thông tư 126/2020/TT-BQP về loại khỏi biên chế và xử lý tài sản nhà nước trong Bộ Quốc phòng|Điều 39"
+    ]
   }
 ]
